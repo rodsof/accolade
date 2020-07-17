@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <Layout>
       <div className="p-32 bg-gray-400 text-center font-semibold text-xl">
-        <Link href="/upcomingEvents">
+        <Link href="/events">
           <a>Upcoming Events</a>
         </Link>
       </div>

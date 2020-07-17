@@ -10,7 +10,8 @@ import {
     LOGIN_OK,
     LOGIN_ERROR,
     USER_AUTENTICATED,
-    LOG_OUT
+    LOG_OUT,
+    GET_USER
 } from '../../types';
 
 const AuthState = ({children}) => {
@@ -74,6 +75,8 @@ const AuthState = ({children}) => {
         }, 3000);
     }
 
+
+    
     // get autenticated user
     const autenticatedUser = async () => {
         const token = localStorage.getItem('token');

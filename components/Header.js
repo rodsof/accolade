@@ -9,28 +9,27 @@ const Header = () => {
   const [isOpen, open] = useState(false);
   // define context
   const AuthContext = useContext(authContext);
-  const { autenticatedUser,user,  autenticated, logout } = AuthContext;
+  const { autenticatedUser, user, logout } = AuthContext;
   useEffect(() => {
     autenticatedUser();
-
   }, []);
   return (
-    <div className="w-100 bg-gray-400 p-5">
+    <div className="w-100 bg-teal-500 p-6">
       <nav className="flex-row">
         <div className="flex flex-row justify-between">
           <a href="/">
-            <span className="font-semibold text-xl tracking-tight">
+            <span className="font-semibold text-xl bg-transparent text-teal-200 hover:text-white hover:border-white">
               Accolade
             </span>
           </a>
 
           <button
             id="hamburgerbtn"
-            className="bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+            className="bg-transparent text-teal-200 hover:text-white hover:border-white"
             onClick={() => open(!isOpen)}
           >
             <svg
-              className="fill-current h-8 w-8"
+              className="fill-current h-10 w-10"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -41,18 +40,18 @@ const Header = () => {
         </div>
 
         <ul className={isOpen ? "active" : "hidden"} id="mobileMenu">
-            { autenticated ? 
+            { user ? 
             <li className="text-center pr-5">
             <a 
             type="button"
-            className="block mt-4 text-gray-800 hover:text-gray-600"
+            className="block mt-4 text-teal-200 hover:text-white"
             onClick={() => logout() }
         >Log Out</a>
         </li>
             : <> 
           <li className="text-center pr-5">
             <Link href="/login">
-              <a className="block mt-4 text-gray-800 hover:text-gray-600">
+              <a className="block mt-4 text-teal-200 hover:text-white">
                 {" "}
                 Log In{" "}
               </a>
@@ -60,7 +59,7 @@ const Header = () => {
           </li>
           <li className="text-center pr-5">
             <Link href="/signup">
-              <a className="block mt-4 text-gray-800 hover:text-gray-600">
+              <a className="block mt-4 text-teal-200 hover:text-white">
                 Sign Up
               </a>
             </Link>
@@ -70,14 +69,14 @@ const Header = () => {
 
           <li className="text-center pr-5">
             <Link href="/about">
-              <a className="block mt-4 text-gray-800 hover:text-gray-600">
+              <a className="block mt-4 text-teal-200 hover:text-white">
                 About
               </a>
             </Link>
           </li>
           <li className="text-center pr-5">
             <Link href="/contact">
-              <a className="block mt-4  text-gray-800 hover:text-gray-600">
+              <a className="block mt-4 text-teal-200 hover:text-white">
                 Contact
               </a>
             </Link>

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import Layout from "../components/Layout";
 import postContext from "../context/posts/postContext";
+import moment from 'moment';
+
 
 const Posts = () => {
   // define context
@@ -22,7 +24,7 @@ const Posts = () => {
 
   //  check if there are posts
   if (posts.length === 0)
-    return <p>There aren't posts yet, start adding one</p>;
+    return <Layout>There aren't posts yet, start adding one</Layout>;
 
   return (
     <Layout>
@@ -30,9 +32,12 @@ const Posts = () => {
           {posts.map((post) => (
             <div className="p-12 bg-gray-300" key={post.id}>
               <h1 className="text-center font-semibold text-xl">
-                {post.title} 
+                Looking for a {post.title} 
               </h1>
-              <p>{post.details}</p>
+              <p><b>Pay: </b>{post.details}</p>
+              <p><b>Date:</b> {moment(post.date).format('LLLL')} </p>
+              <p><b>Project details: </b>{post.details}</p>
+              <p><b>Contact Info:</b> {post.creator}</p>
             </div>
           ))}
         </ul>
