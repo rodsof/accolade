@@ -23,7 +23,7 @@ const PostState = props => {
         posts : [],
         form : false,
         errorform: false,
-        post: null, 
+        postsfiltered: [], 
         message: null,
         creatorInfo: null,
         spinnerpost: null
@@ -80,11 +80,8 @@ const PostState = props => {
 
     // Add new post
     const addPost = async post => {
-        console.log("entra")
-        console.log(post);
         try {
             const resp = await axiosClient.post('/api/posts', post);
-            console.log(resp);
             // Insertar post into state
             dispatch({
                 type: ADD_POST,
@@ -111,10 +108,10 @@ const PostState = props => {
     } 
 
     // Select Post clicked
-    const currentPost = postId => {
+    const filterPost = title => {
         dispatch({
             type: CURRENT_POST,
-            payload: postId
+            payload: title
         })
     }
 
@@ -146,7 +143,7 @@ const PostState = props => {
                 posts: state.posts,
                 form: state.form,
                 errorform: state.errorform,
-                post: state.post,
+                postsfiltered: state.postsfiltered,
                 message: state.message,
                 creatorInfo: state.creatorInfo,
                 spinnerpost: state.spinnerpost,
@@ -154,7 +151,7 @@ const PostState = props => {
                 getPosts,
                 addPost,
                 showError,
-                currentPost,
+                filterPost,
                 deletePost,
                 getCreator
             }}

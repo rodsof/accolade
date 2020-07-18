@@ -44,9 +44,10 @@ const UpcomingEvents = () => {
         </div>
       </Layout>
     );
-  if (!event) {
-    currentEvent(events[0]._id);
-  }
+    
+  // if (!event) {
+  //   currentEvent(events[0]._id);
+  // }
 
   return (
     <Layout>
@@ -150,7 +151,7 @@ const UpcomingEvents = () => {
             })}
           </tbody>
         </table>
-        {event ? <Event event={event[0]} /> : null}
+        {event ? <Event  /> : null}
       </div>
     </Layout>
   );

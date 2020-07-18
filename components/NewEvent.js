@@ -26,8 +26,6 @@ const NewEvent = () => {
       details: Yup.string().required("Please insert a date"),
     }),
     onSubmit: (data) => {
-        console.log(data)
-
       addEvent(data);
     },
   });
@@ -211,7 +209,7 @@ const NewEvent = () => {
                 value="Add event"
               />
             </form>
-            { errorform ?  <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">Error creating the event, please try again</span>  : null }
+            { errorform ?  <span className="rounded bg-red-400 py-1 px-3 text-xs font-bold">Error creating the event, please try again</span>  : null }
           </div>
         </div>
       ) : null}

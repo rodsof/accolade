@@ -48,7 +48,6 @@ const EventState = props => {
         try {
            
             const resp = await axiosClient.get('/api/events');
-
             dispatch({
                 type: GET_EVENTS,
                 payload: resp.data.events

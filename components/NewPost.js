@@ -20,11 +20,10 @@ const NewPost = () => {
       city: Yup.string().required("Please insert a city"),
       type: Yup.string().required("Please select a type"),
       title: Yup.string().required("Please insert a title"),
-      details: Yup.string().required("Please insert a date"),
+      details: Yup.string().required("Please insert job details"),
       pay: Yup.string().required("Please enter a payment"),
     }),
     onSubmit: (data) => {
-        console.log("data" + data)
       addPost(data);
     },
   });
@@ -186,7 +185,7 @@ const NewPost = () => {
               />
             </form>
             {errorform ? (
-              <span class="rounded bg-red-400 py-1 px-3 text-xs font-bold">
+              <span className="rounded bg-red-400 py-1 px-3 text-xs font-bold">
                 Error creating the post, please try again
               </span>
             ) : null}

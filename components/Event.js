@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import moment from "moment";
 import eventContext from "../context/events/eventContext";
-import MapWithAMarker from "./MapWithAMarker";
-const Event = ({ event }) => {
+import Map from "./Map.js";
+// comente {event}
+const Event = () => {
   // define context
   const EventContext = useContext(eventContext);
-  const { message, getCreator, creatorInfo } = EventContext;
-
+  const { message, getCreator, creatorInfo, event } = EventContext;
   // get craetor info when component is loaded
   useEffect(() => {
     // if there is an error
@@ -30,7 +30,8 @@ const Event = ({ event }) => {
       <p>Time: {moment(event.date).format("LT")}</p>
       <p>Details: {event.details}</p>
       </div>
-      <MapWithAMarker
+      <Map
+      city={event.city}
       />
     </div>
   );

@@ -22,7 +22,7 @@ const Post = ({post}) => {
   return (
     <div className="p-12 mb-20 bg-gray-300">
       <h1 className="text-center font-semibold text-xl">
-        Looking for a {post.title}
+         {post.title}
       </h1>
       <p className="pl-10">
         <b>Pay: </b>

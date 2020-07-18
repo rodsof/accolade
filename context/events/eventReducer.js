@@ -21,6 +21,7 @@ export default (state, action) => {
             return {
                 ...state,
                 events: action.payload,
+                event: action.payload[0],
                 spinnerevent: null
             }
         case ADD_EVENT:
@@ -38,7 +39,7 @@ export default (state, action) => {
         case CURRENT_EVENT:
             return {
                 ...state,
-                event: state.events.filter(event => event._id === action.payload )
+                event: state.events.filter(event => event._id === action.payload )[0]
             }
         case DELETE_EVENT:
             return {

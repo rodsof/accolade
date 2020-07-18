@@ -16,6 +16,7 @@ export default function Index() {
 
   const PostContext = useContext(postContext);
   const { posts, getPosts, spinnerpost } = PostContext;
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -34,7 +35,7 @@ export default function Index() {
 
   return (
     <Layout>
-      <div className="p-32 bg-gray-400 text-center font-semibold text-xl">
+      <div className="mt-10 p-32 bg-gray-400 text-center font-semibold text-xl">
         {events.length === 0 && !spinnerevent ? (
           <>
             <h1>There aren't uncoming events</h1>
@@ -44,13 +45,22 @@ export default function Index() {
           </>
         ) : (
           <>
+          {spinnerevent ? 
+            <div className="w-full h-full fixed block top-0 left-0 bg-white opacity-75 z-50">
+              <span className="text-teal-500 opacity-75 top-1/2 my-0 mx-auto block relative w-0 h-0">
+                <i className="fas fa-circle-notch fa-spin fa-5x" />
+              </span>
+            </div>
+            : null }
             <h1>Upcoming Events:</h1>
+            <ul>
             {events.slice(0, 3).map((event) => {
-              return <p key={event._id}> {event.title}</p>;
+              return <li key={event._id}> {event.title}</li>;
             })}
+            </ul>
             <Link href="/events">
               <a className="block mt-4 text-gray-800 hover:text-gray-600 underline">
-                All
+                All Events
               </a>
             </Link>
           </>
@@ -68,37 +78,39 @@ export default function Index() {
           </>
         ) : (
           <>
+          {spinnerpost ? 
             <div className="w-full h-full fixed block top-0 left-0 bg-white opacity-75 z-50">
               <span className="text-teal-500 opacity-75 top-1/2 my-0 mx-auto block relative w-0 h-0">
                 <i className="fas fa-circle-notch fa-spin fa-5x" />
               </span>
             </div>
+            : null }
             <h1 className="mb-10 text-3xl">Talent needed! </h1>
             {posts.slice(0, 3).map((post, index) => {
               return (
                 <div key={post._id}>
                   {" "}
-                  <p className="text-left">
-                    Project {index} is {post.title}
+                  <p className="text-center">
+                    Project {index} is {post.title} in  {post.city}
                   </p>
-                  <p className="text-right">{post.city}</p>{" "}
+                  <Link href="/posts">
+              <a className="block mt-4 text-center text-gray-800 hover:text-gray-600 underline text-left">
+                All Posts
+              </a>
+            </Link>
                 </div>
               );
             })}
-            <Link href="/posts">
-              <a className="block mt-4 text-gray-800 hover:text-gray-600 underline text-left">
-                All
-              </a>
-            </Link>
+            
           </>
         )}
       </div>
       <div className="mt-20 p-32 bg-teal-400 text-center font-semibold text-xl">
         <Link href="/">
-          <a className="mb-10 text-3xl">Weekly Creative Spotlight</a>
+          <a className="text-3xl">Weekly Creative Spotlight</a>
         </Link>
-        <img className="mx-auto mt-10" src="/hero.png" alt="Ideas"></img>
-        <p className="mt-12">
+        <img className="mt-10 mx-auto h-auto w-4/5" src="/spotlight.jpeg" alt="spotlight"/>
+          <p className="mt-12">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tempus
           vehicula tellus, a volutpat justo accumsan et. Donec sollicitudin
           vulputate semper. Proin posuere non tortor ullamcorper cursus.
@@ -117,14 +129,14 @@ export default function Index() {
         <br />
         <p>Follow us on social media...</p>
         <div className="pt-20">
-        <button class="bg-teal-600 mx-10 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full">
-                <span className="icon fa-twitter">Twitter</span>
+        <button className="bg-transparent mx-10 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-full">
+        <img className="h-10 w-10" src="/twitter.svg"/>
         </button>
-        <button class="bg-teal-600 mx-10 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full">
-                <span className="icon fa-twitter">Facebook</span>
+        <button className="bg-transparent mx-10 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-full">
+                <img className="h-10 w-10" src="/facebook.svg"/>
         </button>
-        <button class="bg-teal-600 mx-10 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-full">
-                <span className="icon fa-twitter">Instagram</span>
+        <button className="bg-transparent  mx-10 hover:bg-green-300 text-white font-bold py-2 px-4 rounded-full">
+        <img className="h-10 w-10" src="/instagram.svg"/>
         </button>
         </div>
       </div>

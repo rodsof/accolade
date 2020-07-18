@@ -21,6 +21,7 @@ export default (state, action) => {
       return {
         ...state,
         posts: action.payload,
+        postsfiltered: action.payload,
         spinnerpost: null,
       };
     case ADD_POST:
@@ -38,7 +39,7 @@ export default (state, action) => {
     case CURRENT_POST:
       return {
         ...state,
-        post: state.posts.filter((post) => post._id === action.payload),
+        postsfiltered: state.posts.filter((post) => post.title.includes(action.payload)),
       };
     case DELETE_POST:
       return {
