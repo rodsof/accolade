@@ -1,15 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "../components/Layout";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import authContext from "../context/auth/authContext";
+import { useRouter } from "next/router";
 /* import Alerta from '../components/Alerta' */
 
 const SignUp = () => {
   // Access state
   const AuthContext = useContext(authContext);
-  const { message, createUser } = AuthContext;
+  const { message, createUser, autenticated} = AuthContext;
 
+  
+    // Next router
+    const router = useRouter();
+
+    useEffect(() => {
+    if(autenticated) {
+      router.push('/');
+    }
+  }, [autenticated]);
   // Form and validation with formik y Yup
   const formik = useFormik({
     initialValues: {
@@ -38,7 +48,10 @@ const SignUp = () => {
           Sign-Up
         </h2>
 
-        {/* { mensaje && <Alerta />} */}
+         { message  ? <div className="my-2 bg-gray-200 border-l-4 border-red-500 text-red-700 p-4">
+                    <p className="font-bold">Error</p>
+                    <p>{message} </p>
+                  </div> : null}
         <div className="flex justify-center mt-5">
           <div className="w-full max-w-lg">
             <form
@@ -79,7 +92,7 @@ const SignUp = () => {
                 </label>
                 <input
                   type="text"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer"
                   id="username"
                   placeholder="Choose an username"
                   value={formik.values.username}
@@ -145,7 +158,7 @@ const SignUp = () => {
 
               <input
                 type="submit"
-                className="bg-teal-600 hover:bg-gray-900 w-full p-2 text-white uppercase font-bold"
+                className="bg-teal-600 cursor-pointer hover:bg-gray-900 w-full p-2 text-white uppercase font-bold"
                 value="Create Account"
               />
             </form>

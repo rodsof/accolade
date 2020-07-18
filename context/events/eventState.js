@@ -1,15 +1,15 @@
 import React, { useReducer } from 'react';
 
-import postContext from './postContext';
-import postReducer from './postReducer';
+import eventContext from './eventContext';
+import eventReducer from './eventReducer';
 import { 
-    POST_FORM, 
-    GET_POSTS,
-    ADD_POST,
-    POST_ERROR,
-    VALIDATE_POST,
-    CURRENT_POST,
-    DELETE_POST,
+    EVENT_FORM, 
+    GET_EVENTS,
+    ADD_EVENT,
+    EVENT_ERROR,
+    VALIDATE_EVENT,
+    CURRENT_EVENT,
+    DELETE_EVENT,
     GET_CREATOR,
     SPINNER_ON
 } from '../../types';
@@ -17,40 +17,41 @@ import {
 import axiosClient from '../../config/axios';
 
 
-const PostState = props => {
+const EventState = props => {
 
     const initialState = {
-        posts : [],
+        events : [],
         form : false,
         errorform: false,
-        post: null, 
+        event: null, 
         message: null,
         creatorInfo: null,
-        spinnerpost: null
+        spinnerevent: null
     }
 
     // Dispatch 
-    const [state, dispatch] = useReducer(postReducer, initialState)
+    const [state, dispatch] = useReducer(eventReducer, initialState)
 
     // CRUD
 
     const showForm = () => {
         dispatch({
-            type: POST_FORM
+            type: EVENT_FORM
         })
     }
 
-    // Get posts
-    const getPosts = async () => {
+    // Get events
+    const getEvents = async () => {
         dispatch({
             type: SPINNER_ON
         })
         try {
-            const resp = await axiosClient.get('/api/posts');
+           
+            const resp = await axiosClient.get('/api/events');
 
             dispatch({
-                type: GET_POSTS,
-                payload: resp.data.posts
+                type: GET_EVENTS,
+                payload: resp.data.events
             })
         } catch (error) {
             const alert = {
@@ -59,14 +60,14 @@ const PostState = props => {
             }
             
             dispatch({
-                type: POST_ERROR,
+                type: EVENT_ERROR,
                 payload: alert
             })
         }
     }
 
-    // Get creator info
-    const getCreator = async id => {
+     // Get creator info
+     const getCreator = async id => {
         try {
             const resp = await axiosClient.get('/api/users', { params: { id }});
             dispatch({
@@ -78,16 +79,15 @@ const PostState = props => {
         }
     }
 
-    // Add new post
-    const addPost = async post => {
-        console.log("entra")
-        console.log(post);
+
+    // Add new event
+    const addEvent = async event => {
+
         try {
-            const resp = await axiosClient.post('/api/posts', post);
-            console.log(resp);
-            // Insertar post into state
+            const resp = await axiosClient.post('/api/events', event);
+            // Insertar event into state
             dispatch({
-                type: ADD_POST,
+                type: ADD_EVENT,
                 payload: resp.data
             })
         } catch (error) {
@@ -97,7 +97,7 @@ const PostState = props => {
             }
             
             dispatch({
-                type: POST_ERROR,
+                type: EVENT_ERROR,
                 payload: alert
             })
         }
@@ -106,25 +106,25 @@ const PostState = props => {
     // Validate form 
     const showError = () => {
         dispatch({
-            type: VALIDATE_POST
+            type: VALIDATE_EVENT
         })
     } 
 
-    // Select Post clicked
-    const currentPost = postId => {
+    // Select Event clicked
+    const currentEvent = eventId => {
         dispatch({
-            type: CURRENT_POST,
-            payload: postId
+            type: CURRENT_EVENT,
+            payload: eventId
         })
     }
 
-    // Delete post
-    const deletePost = async postId => {
+    // Delete event
+    const deleteEvent = async eventId => {
         try {
-            await axiosClient.delete(`/api/posts/${postId}`);
+            await axiosClient.delete(`/api/events/${eventId}`);
             dispatch({
-                type: DELETE_POST,
-                payload: postId
+                type: DELETE_EVENT,
+                payload: eventId
             })
         } catch (error) {
             const alert = {
@@ -133,7 +133,7 @@ const PostState = props => {
             }
             
             dispatch({
-                type: POST_ERROR,
+                type: EVENT_ERROR,
                 payload: alert
             })
         }
@@ -141,28 +141,28 @@ const PostState = props => {
 
 
     return (
-        <postContext.Provider
+        <eventContext.Provider
             value={{
-                posts: state.posts,
+                events: state.events,
                 form: state.form,
                 errorform: state.errorform,
-                post: state.post,
+                event: state.event,
                 message: state.message,
                 creatorInfo: state.creatorInfo,
-                spinnerpost: state.spinnerpost,
+                spinnerevent: state.spinnerevent,
                 showForm,
-                getPosts,
-                addPost,
+                getEvents,
+                addEvent,
                 showError,
-                currentPost,
-                deletePost,
+                currentEvent,
+                deleteEvent,
                 getCreator
             }}
         >
             {props.children}
-        </postContext.Provider>
+        </eventContext.Provider>
         
     )
 }
 
-export default PostState;
+export default EventState;

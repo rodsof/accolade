@@ -5,7 +5,8 @@ import {
     LOGIN_OK,
     LOGIN_ERROR,
     USER_AUTENTICATED,
-    LOG_OUT
+    LOG_OUT,
+    SPINNER_ON
 } from '../../types';
 
 export default (state, action) => {
@@ -22,7 +23,8 @@ export default (state, action) => {
             return {
                 ...state,
                 token: action.payload,
-                autenticated: true
+                autenticated: true,
+                spinnerauth: false
             }
         case HIDE_ALERT:
             return {
@@ -44,6 +46,11 @@ export default (state, action) => {
                 autenticated: null,
 
             }
+            case SPINNER_ON:
+                return {
+                  ...state,
+                  spinnerauth: true
+                };
         default:
             return state;
     }

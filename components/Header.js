@@ -9,12 +9,10 @@ const Header = () => {
   const [isOpen, open] = useState(false);
   // define context
   const AuthContext = useContext(authContext);
-  const { autenticatedUser, user, logout } = AuthContext;
-  useEffect(() => {
-    autenticatedUser();
-  }, []);
+  const {  user, logout } = AuthContext;
+   
   return (
-    <div className="w-100 bg-teal-500 p-6">
+    <div className="w-100 bg-teal-600 p-6">
       <nav className="flex-row">
         <div className="flex flex-row justify-between">
           <a href="/">

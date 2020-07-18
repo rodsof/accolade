@@ -11,7 +11,7 @@ import {
     LOGIN_ERROR,
     USER_AUTENTICATED,
     LOG_OUT,
-    GET_USER
+    SPINNER_ON
 } from '../../types';
 
 const AuthState = ({children}) => {
@@ -22,7 +22,8 @@ const AuthState = ({children}) => {
         autenticated: null,
         user: null,
         message: null,
-        loading: null
+        loading: null,
+        spinnerauth: null
     }
 
     // define reducer
@@ -53,7 +54,9 @@ const AuthState = ({children}) => {
 
     // login user
     const login = async datos => {
-
+        dispatch({
+            type: SPINNER_ON
+        })
         try {
             const resp = await axiosClient.post('/api/auth', datos);
             dispatch({
@@ -116,6 +119,7 @@ const AuthState = ({children}) => {
                 user: state.user,
                 message: state.message,
                 loading: state.loading,
+                spinnerauth: state.spinnerauth,
                 createUser,
                 login,
                 autenticatedUser, 
