@@ -8,7 +8,7 @@ import NewPost from "../components/NewPost";
 const Posts = () => {
   // define context
   const PostContext = useContext(postContext);
-  const { posts, getPosts, message, filterPost, postsfiltered } = PostContext;
+  const {  getPosts, message, filterPost, postsfiltered } = PostContext;
   // Define auth context
   const AuthContext = useContext(authContext);
   const { user, autenticatedUser } = AuthContext;
@@ -45,7 +45,7 @@ const Posts = () => {
 
           {user ? <NewPost /> : null}
           <div className="flex justify-center">
-            <select name="title" onChange={filter} default="default">
+            <select name="type" onChange={filter} default="default">
               <option value="default">Select a type...</option>
               <option value="Looking for actors">Looking for actors</option>
               <option value="Looking for dancers">Looking for dancers</option>
@@ -68,7 +68,7 @@ const Posts = () => {
           <NewPost />
           <div className="flex justify-center">
             <select name="title" onChange={filter} default="default">
-            <option value="default">Select a type...</option>
+            <option value="default" disabled={true}>Select a type...</option>
               <option value="Looking for actors">Looking for actors</option>
               <option value="Looking for dancers">Looking for dancers</option>
               <option value="Looking for influencers">

@@ -7,6 +7,7 @@ import {
     EVENT_UPDATE_FORM,
     GET_EVENTS,
     ADD_EVENT,
+    UPDATE_EVENT,
     EVENT_ERROR,
     VALIDATE_EVENT,
     CURRENT_EVENT,
@@ -125,6 +126,21 @@ const EventState = props => {
         })
     }
 
+     // Update event
+     const updateEvent = async event => {
+
+        try {
+            const resp = await axiosClient.put(`/api/events/${event._id}`, event);
+            
+            dispatch({
+                type: UPDATE_EVENT,
+                payload: resp.data.event
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     // Delete event
     const deleteEvent = async eventId => {
         try {
@@ -164,6 +180,7 @@ const EventState = props => {
                 addEvent,
                 showError,
                 currentEvent,
+                updateEvent,
                 deleteEvent,
                 getCreator
             }}

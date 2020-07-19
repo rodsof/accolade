@@ -1,7 +1,9 @@
 import {
   POST_FORM,
+  POST_UPDATE_FORM,
   GET_POSTS,
   ADD_POST,
+  UPDATE_POST,
   POST_ERROR,
   VALIDATE_POST,
   CURRENT_POST,
@@ -15,8 +17,13 @@ export default (state, action) => {
     case POST_FORM:
       return {
         ...state,
-        form: true,
+        form: !state.form
       };
+      case POST_UPDATE_FORM:
+        return {
+            ...state,
+            formupdate: !state.formupdate
+        }
     case GET_POSTS:
       return {
         ...state,
@@ -28,9 +35,17 @@ export default (state, action) => {
       return {
         ...state,
         posts: [...state.posts, action.payload],
+        postsfiltered: [...state.postsfiltered, action.payload],
         form: false,
         errorform: false,
       };
+      case UPDATE_POST:
+        return {
+            ...state,
+            posts: state.posts.map(post => post._id === action.payload._id ? action.payload : post ),
+            postsfiltered: state.postsfiltered.map(post => post._id === action.payload._id ? action.payload : post ),
+            formupdate: !state.formupdate
+        }
     case VALIDATE_POST:
       return {
         ...state,
@@ -45,6 +60,7 @@ export default (state, action) => {
       return {
         ...state,
         posts: state.posts.filter((post) => post._id !== action.payload),
+        postsfiltered: state.posts.filter((post) => post._id !== action.payload),
         post: null,
       };
     case POST_ERROR:

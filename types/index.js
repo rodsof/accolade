@@ -10,12 +10,15 @@ export const EVENT_FORM = 'EVENT_FORM';
 export const EVENT_UPDATE_FORM = 'EVENT_UPDATE_FORM';
 export const GET_EVENTS = 'GET_EVENTS';
 export const ADD_EVENT = 'ADD_EVENT';
+export const UPDATE_EVENT = 'UPDATE_EVENT';
 export const EVENT_ERROR = 'EVENT_ERROR';
 export const VALIDATE_EVENT = 'VALIDATE_EVENT';
 export const CURRENT_EVENT = 'CURRENT_EVENT';
 export const DELETE_EVENT = 'DELETE_EVENT';
 
 export const POST_FORM = 'POST_FORM';
+export const POST_UPDATE_FORM = 'POST_UPDATE_FORM';
+export const UPDATE_POST = 'UPDATE_POST';
 export const GET_POSTS = 'GET_POSTS';
 export const ADD_POST = 'ADD_POST';
 export const POST_ERROR = 'POST_ERROR';

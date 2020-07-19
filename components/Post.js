@@ -3,11 +3,12 @@ import postContext from "../context/posts/postContext";
 import moment from "moment";
 import { DELETE_POST } from "../types";
 import authContext from "../context/auth/authContext";
+import UpdatePost from "./UpdatePost";
 
 const Post = ({ post }) => {
   // define context
   const PostContext = useContext(postContext);
-  const { message, getCreator, creatorInfo, deletePost } = PostContext;
+  const { message, getCreator, creatorInfo, deletePost, updatePost, formupdate, showUpdateForm } = PostContext;
   // Define auth context
   const AuthContext = useContext(authContext);
   const { user, autenticatedUser } = AuthContext;
@@ -71,14 +72,22 @@ const Post = ({ post }) => {
               <p>{message.msg} </p>
             </div>
           ) : null}
+           <button
+            className="mt-12 ml-12 bg-teal-600 hover:bg-gray-900 p-2 text-white uppercase font-bold cursor:pointer"
+            onClick={() => showUpdateForm()}
+          >
+            Edit
+          </button>
           <button
-            className="mt-12 mx-auto items-center rounded bg-red-400 py-1 px-3 text-xs font-bold hover:bg-red-400 hover:text-red-200"
+            className="mt-12 ml-12 bg-teal-600 hover:bg-gray-900 p-2 text-white uppercase font-bold cursor:pointer"
             onClick={() => delPost(post._id)}
           >
             Remove
           </button>
+          {formupdate ? <UpdatePost post={post} /> : null}
         </>
       ) : null}
+      
     </div>
   );
 };

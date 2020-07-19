@@ -15,9 +15,6 @@ const UpcomingEvents = () => {
     getEvents,
     currentEvent,
     event,
-    deleteEvent,
-    formupdate,
-    showUpdateForm,
   } = EventContext;
   // Define auth context
   const AuthContext = useContext(authContext);
@@ -43,16 +40,6 @@ const UpcomingEvents = () => {
     currentEvent(id); // Fix event
   };
 
-  // Function to delete event
-  const delEvent = (id) => {
-    deleteEvent(id);
-    getEvents();
-  };
-
-  //Function to update event
-  const updEvent = (id) => {
-    console.log(id);
-  };
 
   //  check if there are posts
   if (events.length === 0)
@@ -92,9 +79,7 @@ const UpcomingEvents = () => {
                 Status
               </th>
 
-              <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
-                Actions
-              </th>
+            
             </tr>
           </thead>
           <tbody>
@@ -144,41 +129,9 @@ const UpcomingEvents = () => {
                     )}
                   </td>
 
-                  <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                    <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
-                      Actions
-                    </span>
-                    {user && user._id === event.creator ? (
-                      <>
-                        {message ? (
-                          <div className="my-2 bg-gray-200 border-l-4 border-red-500 text-red-700 p-4">
-                            <p className="font-bold">Error</p>
-                            <p>{message.msg} </p>
-                          </div>
-                        ) : null}
-                        {/* <button
-                          className="text-blue-400 hover:text-blue-600 border-none underline"
-                          onClick={() => showUpdateForm()}
-                        >
-                          Edit
-                        </button>
-                        {formupdate ? (
-                          <form onSubmit={() => updEvent(event._id)}>
-                            <input type="submit" value="UPDATE" />
-                          </form>
-                        ) : null} */}
-                        <button
-                          className="text-blue-400 hover:text-blue-600 border-none underline pl-6"
-                          onClick={() => delEvent(event._id)}
-                        >
-                          Remove
-                        </button>
-                      </>
-                    ) : (
-                      <p>Forbidden</p>
-                    )}
-                  </td>
+                 
                 </tr>
+                
               );
             })}
           </tbody>

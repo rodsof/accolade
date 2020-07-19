@@ -3,6 +3,7 @@ import {
     EVENT_UPDATE_FORM,
     GET_EVENTS,
     ADD_EVENT,
+    UPDATE_EVENT,
     EVENT_ERROR,
     VALIDATE_EVENT,
     CURRENT_EVENT,
@@ -16,12 +17,12 @@ export default (state, action) => {
         case EVENT_FORM:
             return {
                 ...state,
-                form: true
+                form: !state.form
             }
         case EVENT_UPDATE_FORM:
                 return {
                     ...state,
-                    formupdate: true
+                    formupdate: !state.formupdate
                 }
         case GET_EVENTS:
             return {
@@ -37,6 +38,13 @@ export default (state, action) => {
                 form: false,
                 errorform: false
             }
+            case UPDATE_EVENT:
+                return {
+                    ...state,
+                    events: state.events.map(event => event._id === action.payload._id ? action.payload : event ),
+                    formupdate: !state.formupdate,
+                    event: action.payload
+                }
         case VALIDATE_EVENT:
             return {
                 ...state, 

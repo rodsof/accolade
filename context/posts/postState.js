@@ -4,8 +4,10 @@ import postContext from './postContext';
 import postReducer from './postReducer';
 import { 
     POST_FORM, 
+    POST_UPDATE_FORM,
     GET_POSTS,
     ADD_POST,
+    UPDATE_POST,
     POST_ERROR,
     VALIDATE_POST,
     CURRENT_POST,
@@ -22,6 +24,7 @@ const PostState = props => {
     const initialState = {
         posts : [],
         form : false,
+        formupdate: false,
         errorform: false,
         postsfiltered: [], 
         message: null,
@@ -37,6 +40,12 @@ const PostState = props => {
     const showForm = () => {
         dispatch({
             type: POST_FORM
+        })
+    }
+
+    const showUpdateForm = () => {
+        dispatch({
+            type: POST_UPDATE_FORM
         })
     }
 
@@ -100,6 +109,20 @@ const PostState = props => {
         }
     }
 
+    // Update event
+    const updatePost = async post => {
+        try {
+            const resp = await axiosClient.put(`/api/posts/${post._id}`, post);
+            
+            dispatch({
+                type: UPDATE_POST,
+                payload: resp.data.post
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     // Validate form 
     const showError = () => {
         dispatch({
@@ -142,15 +165,18 @@ const PostState = props => {
             value={{
                 posts: state.posts,
                 form: state.form,
+                formupdate: state.formupdate,
                 errorform: state.errorform,
                 postsfiltered: state.postsfiltered,
                 message: state.message,
                 creatorInfo: state.creatorInfo,
                 spinnerpost: state.spinnerpost,
                 showForm,
+                showUpdateForm,
                 getPosts,
                 addPost,
                 showError,
+                updatePost,
                 filterPost,
                 deletePost,
                 getCreator
