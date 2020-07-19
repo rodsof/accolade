@@ -157,28 +157,28 @@ export default function Index() {
         <p>Keep up with Us!</p>
         <br />
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3">
-          <div class="py-4">
-            <div class="shadow-lg group container  rounded bg-white  max-w-sm flex justify-center items-center  mx-auto content-div">
+          <div className="py-4">
+            <div className="shadow-lg group container  rounded bg-white  max-w-sm flex justify-center items-center  mx-auto content-div">
               <div>
-                <div class="py-8 px-4 bg-white  rounded fd-cl group-hover:opacity-25">
+                <div className="py-8 px-4 bg-white  rounded fd-cl group-hover:opacity-25">
                   <img src="/post.jpg" />
                 </div>
               </div>
             </div>
           </div>
-          <div class="py-4">
-            <div class="shadow-lg group container  rounded bg-white  max-w-sm flex justify-center items-center  mx-auto content-div">
+          <div className="py-4">
+            <div className="shadow-lg group container  rounded bg-white  max-w-sm flex justify-center items-center  mx-auto content-div">
               <div>
-                <div class="py-8 px-4 bg-white  rounded fd-cl group-hover:opacity-25">
+                <div className="py-8 px-4 bg-white  rounded fd-cl group-hover:opacity-25">
                   <img src="/post.jpg" />
                 </div>
               </div>
             </div>
           </div>
-          <div class="py-4">
-            <div class="shadow-lg group container  rounded bg-white  max-w-sm flex justify-center items-center  mx-auto content-div">
+          <div className="py-4">
+            <div className="shadow-lg group container  rounded bg-white  max-w-sm flex justify-center items-center  mx-auto content-div">
               <div>
-                <div class="py-8 px-4 bg-white  rounded fd-cl group-hover:opacity-25">
+                <div className="py-8 px-4 bg-white  rounded fd-cl group-hover:opacity-25">
                   <img src="/post.jpg" />
                 </div>
               </div>

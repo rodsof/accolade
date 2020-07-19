@@ -1,5 +1,6 @@
 import { 
     EVENT_FORM, 
+    EVENT_UPDATE_FORM,
     GET_EVENTS,
     ADD_EVENT,
     EVENT_ERROR,
@@ -17,6 +18,11 @@ export default (state, action) => {
                 ...state,
                 form: true
             }
+        case EVENT_UPDATE_FORM:
+                return {
+                    ...state,
+                    formupdate: true
+                }
         case GET_EVENTS:
             return {
                 ...state,

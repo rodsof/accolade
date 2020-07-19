@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         href="https://pagecdn.io/lib/font-awesome/5.10.0-11/css/all.min.css" 
         rel="stylesheet" 
         integrity="sha256-p9TTWD+813MlLaxMXMbTA7wN/ArzGyW/L7c5+KkjOkM=" 
-        crossorigin="anonymous" />
+        crossOrigin="anonymous" />
       </Head>
 
       <Header />

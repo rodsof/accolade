@@ -7,6 +7,7 @@ export const USER_AUTENTICATED = 'USER_AUTENTICATED';
 export const LOG_OUT = 'LOG_OUT';
 
 export const EVENT_FORM = 'EVENT_FORM';
+export const EVENT_UPDATE_FORM = 'EVENT_UPDATE_FORM';
 export const GET_EVENTS = 'GET_EVENTS';
 export const ADD_EVENT = 'ADD_EVENT';
 export const EVENT_ERROR = 'EVENT_ERROR';

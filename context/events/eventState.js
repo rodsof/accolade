@@ -4,6 +4,7 @@ import eventContext from './eventContext';
 import eventReducer from './eventReducer';
 import { 
     EVENT_FORM, 
+    EVENT_UPDATE_FORM,
     GET_EVENTS,
     ADD_EVENT,
     EVENT_ERROR,
@@ -22,6 +23,7 @@ const EventState = props => {
     const initialState = {
         events : [],
         form : false,
+        formupdate : false,
         errorform: false,
         event: null, 
         message: null,
@@ -37,6 +39,12 @@ const EventState = props => {
     const showForm = () => {
         dispatch({
             type: EVENT_FORM
+        })
+    }
+
+    const showUpdateForm = () => {
+        dispatch({
+            type: EVENT_UPDATE_FORM
         })
     }
 
@@ -144,12 +152,14 @@ const EventState = props => {
             value={{
                 events: state.events,
                 form: state.form,
+                formupdate: state.formupdate,
                 errorform: state.errorform,
                 event: state.event,
                 message: state.message,
                 creatorInfo: state.creatorInfo,
                 spinnerevent: state.spinnerevent,
                 showForm,
+                showUpdateForm,
                 getEvents,
                 addEvent,
                 showError,

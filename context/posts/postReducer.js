@@ -39,7 +39,7 @@ export default (state, action) => {
     case CURRENT_POST:
       return {
         ...state,
-        postsfiltered: state.posts.filter((post) => post.title.includes(action.payload)),
+        postsfiltered: state.posts.filter((post) => post.type.includes(action.payload)),
       };
     case DELETE_POST:
       return {

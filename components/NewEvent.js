@@ -6,7 +6,7 @@ import eventContext from "../context/events/eventContext";
 const NewEvent = () => {
   // define context
   const EventContext = useContext(eventContext);
-  const { form, errorform, showForm, addEvent, showError } = EventContext;
+  const { form, errorform, showForm, addEvent } = EventContext;
   // Form and validation with formik y Yup
   const formik = useFormik({
     initialValues: {
@@ -93,11 +93,13 @@ const NewEvent = () => {
                   default="default"
                 >
                   <option value="default">Select a type...</option>
-                  <option value="Conference">Conference</option>
-                  <option value="Workshop">Workshop</option>
-                  <option value="Seminar">Seminar</option>
-                  <option value="Webinar">Webinar</option>
-                  <option value="Networking session">Networking session</option>
+                  <option value="Live Music Performance">Live Music Performance</option>
+                  <option value="Spoken Word">Spoken Word</option>
+                  <option value="Comedy Show-Art Showcase">Comedy Show-Art Showcase</option>
+                  <option value="Play/Musical">Play/Musical</option>
+                  <option value="Kid's Event">Kid's Event</option>
+                  <option value="Movie/Short Premiere">Movie/Short Premiere</option>
+                  <option value="Dance Exhibition">Dance Exhibition</option>
                 </select>
                 {formik.touched.type && formik.errors.type ? (
                   <div className="my-2 bg-gray-200 border-l-4 border-red-500 text-red-700 p-4">

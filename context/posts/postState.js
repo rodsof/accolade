@@ -108,10 +108,10 @@ const PostState = props => {
     } 
 
     // Select Post clicked
-    const filterPost = title => {
+    const filterPost = type => {
         dispatch({
             type: CURRENT_POST,
-            payload: title
+            payload: type
         })
     }
 

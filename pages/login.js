@@ -49,7 +49,7 @@ const Login = () => {
         </h2>
         { message  ? <div className="my-2 bg-gray-200 border-l-4 border-red-500 text-red-700 p-4">
                     <p className="font-bold">Error</p>
-                    <p>{message} </p>
+                    <p>{message.msg} </p>
                   </div> : null}
         <div className="flex justify-center mt-5">
           <div className="w-full max-w-lg">

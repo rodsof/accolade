@@ -92,11 +92,10 @@ const NewPost = () => {
                   default="default"
                 >
                   <option value="default">Select a type...</option>
-                  <option value="Conference">Looking for</option>
-                  <option value="Workshop">Type 2</option>
-                  <option value="Seminar">Type 3</option>
-                  <option value="Webinar">Type 4</option>
-                  <option value="Networking session">Networking session</option>
+                  <option value="Looking for actors">Looking for actors</option>
+                  <option value="Looking for dancers">Looking for dancers</option>
+                  <option value="Looking for influencers">Looking for influencers</option>
+                  <option value="Looking for photographers or videographers">Looking for photographers or videographers</option>
                 </select>
                 {formik.touched.type && formik.errors.type ? (
                   <div className="my-2 bg-gray-200 border-l-4 border-red-500 text-red-700 p-4">
